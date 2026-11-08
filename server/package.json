@@ -11,10 +11,13 @@
     "migrate:create": "npx sequelize-cli migration:generate --config config/config.cjs"
   },
   "dependencies": {
+    "@google/genai": "^2.32.0",
+    "@supabase/server": "^1.4.1",
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "path": "^0.12.7",
     "pg": "^8.12.0",
+    "postgres": "^4.1.0",
     "sequelize": "^6.37.6"
   },
   "devDependencies": {
