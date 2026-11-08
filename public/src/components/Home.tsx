@@ -2,6 +2,7 @@ import { useState, useRef } from 'react';
 import { observer } from 'mobx-react-lite';
 import { Text, Loader, Flex, TextInput, Paper, Title } from '@mantine/core';
 import { IconSend } from '@tabler/icons-react';
+import Markdown from 'react-markdown';
 
 const RAGInterface = observer(() => {
   const [question, setQuestion] = useState('');
@@ -119,8 +120,8 @@ const RAGInterface = observer(() => {
       {response && !isLoading && (
         <Flex p='lg' direction={'column'} align={'start'} w={'100%'}>
           <Title order={4}>Answer</Title>
-          <Paper w='100%'>
-            <Text>{response}</Text>
+          <Paper w='100%' className='rag-answer' dir='auto'>
+            <Markdown>{response}</Markdown>
           </Paper>
         </Flex>
       )}

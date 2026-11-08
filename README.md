@@ -172,3 +172,23 @@ Ultimately, you need to implement the two functions below
 
 **Not hallucinating**
 <img width="988" height="418" alt="image" src="https://github.com/user-attachments/assets/939fc8d5-6cc4-402d-9b17-d050afc4876d" />
+
+## Loading the data
+
+From the repository root, with `server/.env` configured:
+
+```bash
+npm run ingest -w server
+npm run ingest:embed -w server
+```
+
+The first command reads the PDFs, Markdown articles and Slack threads, divides
+content into chunks of up to 400 words with source context, and saves them to
+`knowledge_base`. Rerunning it keeps unchanged chunks and their vectors, updates
+changed chunks and clears their old vectors, and removes obsolete chunks.
+
+The second command embeds every row where `embeddings_768 IS NULL`, regardless
+of its source, using `gemini-embedding-001` with 768 dimensions. Rerun it to resume
+if interrupted. Already embedded rows are skipped. The table schema is unchanged.
+
+What is the role of the IDS?

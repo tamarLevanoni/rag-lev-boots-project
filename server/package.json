@@ -8,7 +8,9 @@
     "build": "tsc",
     "start": "node dist/server.js",
     "migrate": "npx sequelize-cli db:migrate --config config/config.cjs",
-    "migrate:create": "npx sequelize-cli migration:generate --config config/config.cjs"
+    "migrate:create": "npx sequelize-cli migration:generate --config config/config.cjs",
+    "ingest:embed": "node --import tsx ingestion/processEmbeddings.ts",
+    "ingest": "node --import tsx ingestion/run.ts"
   },
   "dependencies": {
     "@google/genai": "^2.32.0",
@@ -16,9 +18,13 @@
     "dotenv": "^16.4.5",
     "express": "^4.21.2",
     "path": "^0.12.7",
+    "pdf-parse": "^2.4.5",
     "pg": "^8.12.0",
     "postgres": "^4.1.0",
-    "sequelize": "^6.37.6"
+    "remark-gfm": "^4.0.1",
+    "remark-parse": "^11.0.0",
+    "sequelize": "^6.37.6",
+    "unified": "^11.0.5"
   },
   "devDependencies": {
     "@types/express": "^5.0.0",

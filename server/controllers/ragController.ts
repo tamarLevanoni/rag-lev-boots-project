@@ -19,7 +19,7 @@ export const askQuestion = async (
 ): Promise<void> => {
   try {
     const { userQuestion } = req.body || {};
-    if (!userQuestion) {
+    if (typeof userQuestion !== 'string' || !userQuestion.trim()) {
       res.status(400).json({
         answer: '',
         error: 'You must provide the userQuestion',
